@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for event in events %}
+        <div class="event">
+            <h2>{{ event.title }}</h2>
+            <div class="description">
+                {{ event.description }}
+            </div>
+            <div class="details">
+                <span>When? {{ event.date }} at {{ event.start_time }}</span>
+            </div>
+            <div class="tickets">
+                <h4>Available Tickets:</h4>
+                {% for ticket in event.tickets.all %}
+                    <div class="ticket">{{ ticket.title }} | {{ ticket.price }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
